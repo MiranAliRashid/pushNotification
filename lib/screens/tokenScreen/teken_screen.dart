@@ -16,6 +16,15 @@ class _TokenScreenState extends State<TokenScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        foregroundColor: Colors.black,
+        centerTitle: true,
+        title: Text(
+          'Push Notification',
+        ),
+      ),
       body: FutureBuilder(
         future: Provider.of<AuthProvider>(context).getAllUsers(),
         builder: (BuildContext context, AsyncSnapshot snapshot) {

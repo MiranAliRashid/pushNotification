@@ -17,6 +17,7 @@ class StartScreen extends StatelessWidget {
             onPressed: () async {
               await Provider.of<AuthProvider>(context, listen: false)
                   .signInAnonymously();
+              Navigator.popUntil(context, (route) => route.isFirst);
             },
           ),
         ),

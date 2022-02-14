@@ -1,8 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:psuhnotifcation/models/user_model.dart';
+
 import 'package:psuhnotifcation/providers/auth_providr.dart';
 
 class TokenScreen extends StatefulWidget {
@@ -38,24 +36,44 @@ class _TokenScreenState extends State<TokenScreen> {
               child: Text('Error'),
             );
           }
-          if (snapshot.data.length == 0) {
-            return Center(
-              child: Text('No data'),
-            );
-          }
+
           if (snapshot.data.length > 0) {
-            return ListView.builder(
-              itemCount: snapshot.data.length,
-              itemBuilder: (BuildContext context, int index) {
-                return Container(
-                    margin: const EdgeInsets.all(20),
-                    color: Colors.amber[100],
+            return Container(
+              alignment: Alignment.center,
+              child: Column(
+                children: [
+                  Container(
+                    height: 400,
+                    child: ListView.builder(
+                      itemCount: snapshot.data.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return Container(
+                            margin: const EdgeInsets.all(20),
+                            color: Colors.amber[100],
+                            alignment: Alignment.center,
+                            child: TextButton(
+                              onPressed: () {},
+                              child: Column(
+                                children: [
+                                  Text(snapshot.data[index].name),
+                                  Text(snapshot.data[index].token)
+                                ],
+                              ),
+                            ));
+                      },
+                    ),
+                  ),
+                  Container(
                     alignment: Alignment.center,
                     child: TextButton(
-                      onPressed: () {},
-                      child: Text(snapshot.data[index].name),
-                    ));
-              },
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/notification');
+                      },
+                      child: const Text("go to local notification"),
+                    ),
+                  )
+                ],
+              ),
             );
           } else {
             return Center(

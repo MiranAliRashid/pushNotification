@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:psuhnotifcation/screens/sendNotificationScreen/notification.dart';
+import 'package:psuhnotifcation/screens/tokenScreen/teken_screen.dart';
 import 'package:psuhnotifcation/services/auth_handler.dart';
 
 class Routes extends StatelessWidget {
@@ -10,6 +11,7 @@ class Routes extends StatelessWidget {
     return MaterialApp(initialRoute: '/', routes: {
       '/': (context) => const AuthHandlerScreen(),
       '/notification': (context) => NotificationScreen(),
+      '/tokenScreen': (context) => TokenScreen(),
     });
   }
 }

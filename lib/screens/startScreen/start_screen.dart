@@ -16,8 +16,9 @@ class StartScreen extends StatelessWidget {
             child: Text('Sign in anonymously'),
             onPressed: () async {
               await Provider.of<AuthProvider>(context, listen: false)
-                  .signInAnonymously();
-              Navigator.popUntil(context, (route) => route.isFirst);
+                  .signInAnonymously()
+                  .then((value) =>
+                      Navigator.popAndPushNamed(context, '/tokenScreen'));
             },
           ),
         ),
